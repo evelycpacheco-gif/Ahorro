@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mis bolsillos de ahorro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1>Mis bolsillos de ahorro</h1><p class="sub">Una meta a la vez; el resto va al bolsillo de emergencia.</p></div>
+  <div class="total"><div class="big num" id="total"></div><div class="split num" id="split"></div></div>
+</header>
+
+<div class="grid">
+  <main class="stack">
+    <section id="hero" class="card hero"></section>
+    <section><h2 class="sec">Todos los bolsillos</h2><div class="pockets" id="pockets"></div></section>
+    <section class="card">
+      <details open id="cfg"><summary>Ajustes y metas</summary>
+        <div class="two">
+          <div><label for="monthly">Ahorro mensual total (COP)</label><input id="monthly" type="number" min="0" step="10000" inputmode="numeric"></div>
+          <div><label for="pct">% del ahorro mensual para la meta activa</label><input id="pct" type="number" min="0" max="100" step="5" inputmode="numeric"></div>
+        </div>
+        <div class="two">
+          <div><label for="emgT">Meta del fondo de emergencia (opcional)</label><input id="emgT" type="number" min="0" step="100000" inputmode="numeric"></div>
+          <div><label for="exp">Gastos básicos al mes (opcional)</label><input id="exp" type="number" min="0" step="50000" inputmode="numeric"></div>
+        </div>
+        <div id="geList"></div>
+        <button id="addGoal" type="button" style="margin-top:12px">+ Agregar meta</button>
+        <p class="sub" style="font-size:13px;margin-top:10px">El orden de las metas es la prioridad: el ahorro mensual de la meta activa va a la primera que no esté completa. Lo demás se suma a emergencia.</p>
+      </details>
+    </section>
+  </main>
+
+  <aside class="stack">
+    <section class="card">
+      <h2 class="sec">Registrar aporte</h2>
+      <form id="f" autocomplete="off">
+        <label for="fd">Fecha</label><input id="fd" type="date" required>
+        <label for="fg">Bolsillo</label><select id="fg"></select>
+        <label for="fa">Monto (COP)</label><input id="fa" type="number" min="1000" step="1000" inputmode="numeric" required>
+        <label for="fn">Nota (opcional)</label><input id="fn" type="text" maxlength="80">
+        <button class="pri" type="submit">Guardar aporte</button>
+      </form>
+    </section>
+    <section class="card">
+      <h2 class="sec">Historial</h2>
+      <ul class="hist" id="hist"></ul>
+    </section>
+  </aside>
+</div>
+<footer><span id="sync">Tus datos se guardan solos.</span><button class="ghost" id="theme" type="button">Cambiar tema</button></footer>
+</div>
+
+<script src="utils.js"></script>
+<script src="storage.js"></script>
+<script src="calc.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
